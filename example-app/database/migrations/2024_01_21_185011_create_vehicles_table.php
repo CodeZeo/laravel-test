@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignIdFor(users::class);
+            $table->foreignIdFor(users::class)->onDelete('cascade');
             $table->string('marca');
             $table->string('modelo');
             $table->integer('año');
