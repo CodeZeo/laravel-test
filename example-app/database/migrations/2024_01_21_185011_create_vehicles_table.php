@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\users;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -14,12 +15,12 @@ return new class extends Migration
         Schema::create('vehicles', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignIdFor(users::class);
             $table->string('marca');
             $table->string('modelo');
             $table->integer('año');
             $table->integer('precio');
+            $table->softDeletes();
         });
     }
 
